@@ -1,6 +1,6 @@
 # Nudge o incentivo: guiar o recompensar la conducta en salud
 
-Explorador interactivo para estudiantes de administración en salud, equipos de evaluación económica y gestores de programas en Colombia. Explica qué diferencia a un *nudge* de un incentivo, resume la evidencia 2021–2026 y trae una calculadora del costo de un punto de adherencia con datos por defecto.
+Explorador interactivo de acceso abierto para profesionales de la salud, equipos de evaluación económica, gestores de programas y cualquier lector interesado en Colombia. Explica qué diferencia a un *nudge* de un incentivo, resume la evidencia 2021–2026 y trae una calculadora del costo de un punto de adherencia con datos por defecto.
 
 **Sitio:** https://fadavilar.github.io/nudge-incentivo-salud/
 
@@ -11,7 +11,7 @@ Explorador interactivo para estudiantes de administración en salud, equipos de 
 3. **La evidencia**: incentivos, nudges y las tensiones de la literatura (persistencia, relevancia clínica, encuadre, sesgo de publicación).
 4. **Calculadora**: costo de un punto de adherencia, personas a intervenir por cada adicional (NNT), costo por persona adicional (también con efecto sostenido) y comparación con un valor de referencia. Trae tres escenarios:
    - el caso real de mensajes de texto para la vacunación contra el VPH de Compensar EPS;
-   - el ejercicio de clase, con datos ilustrativos;
+   - un ejercicio ilustrativo, con datos ficticios;
    - un escenario editable para tu programa.
 
    Exporta a Excel el escenario activo con fórmulas vivas y una hoja que compara los tres escenarios (generado en el navegador por `js/xlsx.js`, sin dependencias), genera un enlace con los datos cargados y ofrece una plantilla Excel en blanco (`downloads/plantilla_costo_punto_adherencia.xlsx`). El encabezado lleva un acceso directo a la calculadora.
@@ -39,7 +39,7 @@ HTML, CSS y JavaScript sin dependencias ni paso de compilación, servido tal cua
 - `css/style.css` es el sistema de diseño compartido con los exploradores hermanos;
 - `css/app.css` reúne los componentes propios.
 
-Explorador hermano: [Fundamentos de economía aplicada a la salud](https://fadavilar.github.io/fundamentos-economia-salud/) (semana 1).
+Explorador hermano: [Fundamentos de economía aplicada a la salud](https://fadavilar.github.io/fundamentos-economia-salud/).
 
 ## Autoría y licencia
 

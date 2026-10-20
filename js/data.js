@@ -9,19 +9,19 @@ const DATA = {
     title: "Nudge o incentivo: guiar o recompensar la conducta en salud",
     shortTitle: "Nudge o incentivo · Salud",
     subtitle: "¿Qué diferencia a un empujón de una recompensa? ¿Qué dice la evidencia 2021–2026? ¿Cuánto cuesta ganar un punto de adherencia? ¿Qué ejemplos reales tiene Colombia?",
-    framework: "Contenido docente · Semana 4 · Economía del bienestar y el comportamiento",
+    framework: "Economía del comportamiento aplicada a la salud",
     period: "Evidencia 2021–2026 · revisión de alcance actualizada el 20 oct. 2026",
     author: "Fabian Dávila Ramírez",
     credentials: "MD, MBA, PhD",
     affiliation: "Fundación Universitaria de Ciencias de la Salud (FUCS) · Universidad de Navarra · Universidad de Bogotá Jorge Tadeo Lozano",
-    disclaimer: "Contenido docente y de divulgación. Sintetiza una revisión de alcance propia (marco PCC, PRISMA-ScR; 176 documentos) cuyo cribado hizo un único revisor asistido por IA, con verificación del autor. La calculadora usa fórmulas aritméticas simples y datos por defecto de un caso real y de un ejercicio ilustrativo; no reemplaza una evaluación económica formal.",
+    disclaimer: "Contenido de divulgación. Sintetiza una revisión de alcance propia (marco PCC, PRISMA-ScR; 176 documentos) cuyo cribado hizo un único revisor asistido por IA, con verificación del autor. La calculadora usa fórmulas aritméticas simples y datos por defecto de un caso real y de un ejercicio ilustrativo; no reemplaza una evaluación económica formal.",
     license: {
       name: "Creative Commons Atribución 4.0 Internacional (CC BY 4.0)",
       url: "https://creativecommons.org/licenses/by/4.0/deed.es",
       text: "Puedes copiar, redistribuir y adaptar este contenido para cualquier propósito, incluso comercial, siempre que reconozcas la autoría y enlaces a la licencia."
     },
     relatedWorks: [
-      { title: "Fundamentos de economía aplicada a la salud (semana 1)", text: "Explorador hermano: agentes, fallos de mercado y equidad-eficiencia. Allí se presenta la economía conductual como una de las razones por las que los agentes no eligen como predice la teoría clásica.", url: "https://fadavilar.github.io/fundamentos-economia-salud/" }
+      { title: "Fundamentos de economía aplicada a la salud", text: "Explorador hermano: agentes, fallos de mercado y equidad-eficiencia. Allí se presenta la economía conductual como una de las razones por las que los agentes no eligen como predice la teoría clásica.", url: "https://fadavilar.github.io/fundamentos-economia-salud/" }
     ]
   },
 
@@ -45,7 +45,7 @@ const DATA = {
   ],
 
   audiences: [
-    { who: "Estudiantes de administración en salud", path: "Lee la diferencia (02), luego la evidencia (03) y termina con los ejemplos colombianos (05). El glosario (07) resuelve los términos técnicos.", jump: ["diferencia", "evidencia", "colombia"] },
+    { who: "Si el tema es nuevo para ti", path: "Lee la diferencia (02), luego la evidencia (03) y termina con los ejemplos colombianos (05). El glosario (07) resuelve los términos técnicos.", jump: ["diferencia", "evidencia", "colombia"] },
     { who: "Equipos de evaluación económica", path: "Ve directo a la calculadora (04): reproduce el caso real, cambia los supuestos y compara el costo por persona adicional con un valor de referencia, igual que una RCEI frente a un umbral.", jump: ["calculadora", "metodos"] },
     { who: "Gestores de programas y aseguradores", path: "Revisa los ejemplos colombianos (05) y la lista de chequeo de diseño y ética (06) antes de lanzar una intervención conductual en tu institución.", jump: ["colombia", "etica"] }
   ],
@@ -147,7 +147,7 @@ const DATA = {
       text: "Pruébalo con un caso real colombiano: mensajes de texto para la vacunación contra el VPH, a unos 1.630 pesos por niño vacunado adicional. Luego escribe los datos de tu programa y descarga el resultado en Excel, con las fórmulas.",
       button: "Abrir la calculadora"
     },
-    intro: "Plantilla para estimar cuánto cuesta ganar un punto porcentual de adherencia (o de cualquier conducta medida como proporción: vacunación, tamizaje, asistencia) con una intervención conductual. Trae dos escenarios por defecto —un caso real colombiano y el ejercicio de clase— y un tercero para tus propios datos.",
+    intro: "Plantilla para estimar cuánto cuesta ganar un punto porcentual de adherencia (o de cualquier conducta medida como proporción: vacunación, tamizaje, asistencia) con una intervención conductual. Trae dos escenarios por defecto —un caso real colombiano y un ejercicio ilustrativo— y un tercero para tus propios datos.",
     fields: [
       { id: "n", label: "Personas intervenidas", unit: "personas", step: 1, min: 1, help: "Número de personas que reciben el nudge o el incentivo." },
       { id: "costPerson", label: "Costo variable por persona intervenida", unit: "COP", step: 0.1, min: 0, help: "Mensajes, pagos, bonos o premios por persona durante la intervención." },
@@ -162,9 +162,9 @@ const DATA = {
         values: { n: 3265, costPerson: 45.3, fixed: 0, base: 4.05, treat: 6.83, sustained: null, wtp: null },
         note: "Compensar EPS con la American Cancer Society: 6.915 padres de niños y niñas de 9 años sin vacunar se asignaron al azar a control (3.650, sin mensajes) o a intervención (3.265, 8 mensajes de texto con elementos conductuales durante 10 semanas). Vacunación: 6,83 % frente a 4,05 % (+2,78 puntos). Se enviaron cerca de 29.600 mensajes a unos 5 pesos cada uno; el costo por persona (≈45,3 pesos) es un cálculo del autor: 29.600 × 5 / 3.265. El reporte estima un costo de ≈1.626 pesos por niño vacunado adicional; la calculadora da ≈1.630 por redondeo. Es un reporte de caso, no un artículo revisado por pares, y el análisis estadístico formal estaba pendiente.",
         source: { label: "Compensar EPS y American Cancer Society. Aumentando la vacunación contra el VPH en Colombia: caso de estudio (2026).", url: "https://preventglobalhpvcancers.org/wp-content/uploads/2026/07/Compensar_Case-Study_Espanol-1.pdf" } },
-      { id: "clase", name: "Ejercicio de clase · incentivo financiero a la adherencia", short: "Incentivo (ilustrativo)", level: "nota-autor",
+      { id: "ilustrativo", name: "Ejercicio ilustrativo · incentivo financiero a la adherencia", short: "Incentivo (ilustrativo)", level: "nota-autor",
         values: { n: 500, costPerson: 240000, fixed: 0, base: 50, treat: 62, sustained: 52, wtp: null },
-        note: "Datos ficticios del ejercicio de la semana 4: un incentivo de 240.000 pesos por paciente durante seis meses sube la adherencia del 50 % al 62 %, y al retirarlo vuelve al 52 %. Sirve para ver cómo la persistencia del efecto, más que el pago, define si vale la pena.",
+        note: "Datos ficticios: un incentivo de 240.000 pesos por paciente durante seis meses sube la adherencia del 50 % al 62 %, y al retirarlo vuelve al 52 %. Sirve para ver cómo la persistencia del efecto, más que el pago, define si vale la pena.",
         source: null },
       { id: "propio", name: "Mi programa", short: "Mi programa", level: "nota-autor",
         values: { n: 1000, costPerson: 10000, fixed: 5000000, base: 40, treat: 45, sustained: null, wtp: 500000 },
@@ -334,5 +334,5 @@ const DATA = {
     ]
   },
 
-  conclusion: "Nudges e incentivos cambian conductas de salud por caminos distintos: uno guía y el otro recompensa. La evidencia 2021–2026 muestra efectos reales pero modestos, que en el caso de los incentivos suelen desaparecer al retirarlos. En Colombia ya existen defaults poderosos en la norma —donación de órganos, afiliación de oficio— y un caso medido de mensajes de texto que gana vacunaciones a muy bajo costo. El paso siguiente es evaluar cada intervención como cualquier tecnología sanitaria: cuánto cuesta cada punto ganado, cuánto dura y a quién beneficia."
+  conclusion: "Nudges e incentivos cambian conductas de salud por caminos distintos: uno guía y el otro recompensa. La evidencia 2021–2026 muestra efectos reales pero modestos, que en el caso de los incentivos suelen desaparecer al retirarlos. En Colombia ya existen defaults poderosos en la norma —donación de órganos, afiliación de oficio— y un caso medido de mensajes de texto que gana vacunaciones a muy bajo costo. El paso siguiente es evaluar cada intervención como cualquier tecnología sanitaria y responder tres preguntas: ¿cuánto cuesta cada punto ganado?, ¿cuánto dura el efecto? y ¿a quién beneficia?"
 };

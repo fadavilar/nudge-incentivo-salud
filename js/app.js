@@ -121,7 +121,7 @@
       subs:[ { id:"dif-definiciones", label:"Definiciones" }, { id:"dif-tabla", label:"Seis dimensiones" }, { id:"dif-diagrama", label:"Dos rutas hacia la conducta" }, { id:"dif-familias", label:"Cuatro familias de intervenciones" } ] },
     { id:"evidencia", num:"03", title:"Lo que dice la evidencia", sub:"Incentivos, nudges y las tensiones de la literatura 2021–2026", open:false,
       subs:[ { id:"ev-incentivos", label:"Incentivos financieros" }, { id:"ev-nudges", label:"Nudges" }, { id:"ev-tensiones", label:"Tensiones y advertencias" } ] },
-    { id:"calculadora", num:"04", title:"Calculadora: el costo de un punto de adherencia", sub:"Plantilla interactiva con un caso real colombiano y el ejercicio de clase por defecto", open:false,
+    { id:"calculadora", num:"04", title:"Calculadora: el costo de un punto de adherencia", sub:"Plantilla interactiva con un caso real colombiano y un ejercicio ilustrativo por defecto", open:false,
       subs:[ { id:"calc-plantilla", label:"Plantilla interactiva" }, { id:"calc-comparar", label:"Comparar escenarios" }, { id:"calc-formulas", label:"Cómo se calcula" } ] },
     { id:"colombia", num:"05", title:"Ejemplos en el escenario colombiano", sub:"Normas y programas reales clasificados por mecanismo, más ideas para tu institución", open:false,
       subs:[ { id:"col-ejemplos", label:"Ocho ejemplos verificados" }, { id:"col-ideas", label:"Ideas para tu institución" } ] },
@@ -234,7 +234,7 @@
      ============================================================ */
   function renderResumen(){
     const body = document.getElementById("body-resumen");
-    sectionDivider(body, "resumen-mensajes", "Tres mensajes clave", "Lo esencial de la semana en tres ideas. Cada una enlaza a la evidencia que la sustenta.");
+    sectionDivider(body, "resumen-mensajes", "Tres mensajes clave", "Lo esencial en tres ideas. Cada una enlaza a la evidencia que la sustenta.");
     const grid = el("div",{class:"abstract-grid"});
     DATA.keyMessages.forEach((k,i)=> grid.appendChild(el("div",{class:"pcc-card"},[ el("div",{class:"k"},[(i+1)+" · "+k.title]), el("p",{},[k.text]), k.refs.length ? refChips(k.refs) : null,
       k.calc ? el("div",{class:"btn-row"},[ jumpButton("Calcularlo con la calculadora →","calculadora","calc-plantilla") ]) : null ])));
@@ -417,7 +417,7 @@
       });
       inputs[f.id] = input;
       form.appendChild(el("div",{class:"calc-field"},[
-        el("label",{for:id},[ f.label, f.optional ? el("span",{class:"opt"},[" (opcional)"]) : null ]),
+        el("label",{for:id},[ f.label ]),
         el("div",{class:"calc-input-row"},[ input, el("span",{class:"unit"},[f.unit]) ]),
         el("p",{class:"calc-help"},[f.help]),
       ]));
@@ -471,7 +471,7 @@
     function renderNote(){
       const p = C.presets.find(x=>x.id===calcActive);
       noteBox.innerHTML = "";
-      noteBox.appendChild(el("p",{},[ confidenceTag(p.level, p.level==="verificado" ? "Caso real verificado" : (p.id==="clase" ? "Datos ilustrativos" : "Valores de ejemplo")), " ", el("strong",{},[p.name+". "]), p.note ]));
+      noteBox.appendChild(el("p",{},[ confidenceTag(p.level, p.level==="verificado" ? "Caso real verificado" : (p.id==="ilustrativo" ? "Datos ilustrativos" : "Valores de ejemplo")), " ", el("strong",{},[p.name+". "]), p.note ]));
       if(p.source) noteBox.appendChild(el("p",{class:"muted-small"},["Fuente: ", extLink(p.source.label, p.source.url)]));
     }
     function refreshAll(){

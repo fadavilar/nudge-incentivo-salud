@@ -84,7 +84,7 @@
 .chart-value{ fill: var(--text); font-size:13px; font-weight:700; }
 .chart-bar{ fill: var(--primary); }
 .chart-bar.bar-compensar{ fill: var(--nudge); }
-.chart-bar.bar-clase{ fill: var(--incentive); }
+.chart-bar.bar-ilustrativo{ fill: var(--incentive); }
 .chart-bar.bar-propio{ fill: var(--chip-a); }
 
 /* Colombia */
@@ -142,3 +142,24 @@
 .htr-list{ display:grid; grid-template-columns:auto 1fr; gap:6px 12px; margin:8px 0 0; font-size:.86rem; }
 .htr-list dt{ font-weight:800; color: var(--primary); }
 .htr-list dd{ margin:0; }
+
+/* Impresión y PDF: nada se corta a la derecha y no quedan páginas casi vacías */
+@media print{
+  .hero-cta-box, .text-filter{ display:none !important; }
+  .acc-item{ break-inside: auto !important; }
+  .acc-header{ break-after: avoid; }
+  .acc-panel > div, .acc-body{ min-width:0 !important; }
+  .table-wrap, .diagram-wrap, .chart-box, .studies-wrap{ overflow: visible !important; }
+  .diagram-wrap svg, .chart-box svg{ min-width:0 !important; max-width:100% !important; height:auto; }
+  table.data-table, table.studies{ min-width:0 !important; width:100% !important; }
+  table.data-table.wrap-table td, table.data-table.wrap-table td:first-child{ min-width:0 !important; }
+  table.studies{ font-size:.72rem !important; }
+  table.studies td, table.studies th{ padding:5px 6px !important; }
+  .card, .pcc-card, .evidence-card, .col-card, .mini-card, .result-card, .audience-card, .gap-list li, .calc-field, .hero-citation, table tr{ break-inside: avoid; }
+  .subsection-title{ break-after: avoid; }
+  .subsection-subtitle{ break-after: avoid; }
+  .diagram-wrap, .chart-box{ break-inside: avoid; }
+  table.data-table td, table.data-table th, .compare-table th[scope="row"]{ white-space: normal !important; }
+  .calc-layout{ display:block !important; }
+  .calc-form{ margin-bottom:12px; }
+}
