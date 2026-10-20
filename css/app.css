@@ -45,7 +45,7 @@
 .evidence-card.cat-c{ border-left-color: var(--incentive); }
 .evidence-card.cat-d{ border-left-color: var(--nudge); }
 .evidence-card.cat-b{ border-left-color: var(--danger); }
-.evidence-stat{ font-size:1.25rem; font-weight:800; color: var(--text); margin-bottom:4px; }
+.evidence-stat{ font-size:1.08rem; line-height:1.3; font-weight:800; color: var(--text); margin-bottom:4px; }
 .evidence-card p{ font-size:.86rem; margin:0 0 8px; }
 
 /* Calculadora */
@@ -124,3 +124,21 @@
 /* Insignia de licencia: que no desborde en móvil */
 .cc-badge{ max-width:100%; flex-wrap:wrap; }
 .cc-badge span{ white-space:normal; overflow-wrap:anywhere; min-width:0; }
+
+/* Llamado a la calculadora en el encabezado */
+.hero-cta-box{ display:flex; align-items:center; gap:16px; margin:18px 0 6px; padding:16px 18px; border-radius: var(--radius); background: linear-gradient(135deg, var(--primary-tint), color-mix(in srgb, var(--accent) 14%, var(--surface))); border:1px solid color-mix(in srgb, var(--primary) 35%, transparent); border-left:5px solid var(--accent); }
+.hero-cta-text{ flex:1; min-width:0; }
+.hero-cta-text p{ margin:0; font-size:.92rem; color: var(--text); }
+.hero-cta-text .hero-cta-title{ font-size:1.12rem; font-weight:800; color: var(--primary); margin-bottom:4px; }
+.hero-cta-btn{ flex-shrink:0; font-size:1rem; padding:12px 18px; white-space:nowrap; }
+@media (max-width: 640px){
+  .hero-cta-box{ flex-direction:column; align-items:stretch; }
+  .hero-cta-btn{ white-space:normal; }
+}
+
+/* Evidencia: titular claro, cifra técnica y guía de lectura */
+.evidence-metric{ font-size:.76rem; font-weight:600; color: var(--text-muted); font-variant-numeric: tabular-nums; margin:-2px 0 6px; }
+.how-to-read{ margin:12px 0 4px; }
+.htr-list{ display:grid; grid-template-columns:auto 1fr; gap:6px 12px; margin:8px 0 0; font-size:.86rem; }
+.htr-list dt{ font-weight:800; color: var(--primary); }
+.htr-list dd{ margin:0; }

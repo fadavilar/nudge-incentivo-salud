@@ -8,9 +8,9 @@ const DATA = {
   meta: {
     title: "Nudge o incentivo: guiar o recompensar la conducta en salud",
     shortTitle: "Nudge o incentivo · Salud",
-    subtitle: "Qué diferencia a un empujón de una recompensa, qué dice la evidencia 2021–2026, cuánto cuesta ganar un punto de adherencia y qué ejemplos reales tiene Colombia.",
+    subtitle: "¿Qué diferencia a un empujón de una recompensa? ¿Qué dice la evidencia 2021–2026? ¿Cuánto cuesta ganar un punto de adherencia? ¿Qué ejemplos reales tiene Colombia?",
     framework: "Contenido docente · Semana 4 · Economía del bienestar y el comportamiento",
-    period: "Evidencia 2021–2026 · revisión de alcance del 18 oct. 2026",
+    period: "Evidencia 2021–2026 · revisión de alcance actualizada el 20 oct. 2026",
     author: "Fabian Dávila Ramírez",
     credentials: "MD, MBA, PhD",
     affiliation: "Fundación Universitaria de Ciencias de la Salud (FUCS) · Universidad de Navarra · Universidad de Bogotá Jorge Tadeo Lozano",
@@ -33,7 +33,7 @@ const DATA = {
 
   heroCards: [
     { label: "La diferencia", value: "Guiar o pagar", detail: "Seis dimensiones para distinguir un nudge de un incentivo.", sec: "diferencia" },
-    { label: "La evidencia", value: "176 documentos", detail: "Qué funciona, cuánto y por cuánto tiempo (2021–2026).", sec: "evidencia" },
+    { label: "La evidencia", value: "176 documentos", detail: "¿Qué funciona, cuánto y por cuánto tiempo? (2021–2026)", sec: "evidencia" },
     { label: "La calculadora", value: "Costo por punto", detail: "Plantilla interactiva con un caso real colombiano por defecto.", sec: "calculadora" },
     { label: "Colombia", value: "8 ejemplos", detail: "Normas y programas reales, verificados en fuente oficial.", sec: "colombia" }
   ],
@@ -41,7 +41,7 @@ const DATA = {
   keyMessages: [
     { title: "Un nudge guía; un incentivo recompensa", text: "El nudge cambia la arquitectura de la elección sin prohibir opciones ni cambiar los incentivos económicos; el incentivo añade un pago externo a cambio de la conducta. Ambos cambian la conducta, por mecanismos distintos.", refs: ["Cesareo et al., 2022", "Bolívar et al., 2021"] },
     { title: "Funcionan, pero con efectos modestos y que decaen", text: "Los incentivos mejoran a corto plazo la abstinencia, el testeo, el tamizaje y la actividad física; los defaults son el nudge más consistente. El efecto del incentivo suele caer al retirarlo, y tras corregir el sesgo de publicación el efecto medio de estas intervenciones es pequeño.", refs: ["Krishnamoorthy et al., 2021", "Lumia et al., 2026", "Taylor et al., 2022", "Abellán-Perpiñán et al., 2025", "Kaiser et al., 2025"] },
-    { title: "Hay que evaluarlos como cualquier tecnología", text: "Cuánto cuesta cada punto de adherencia ganado, cuánto dura el efecto y a quién beneficia son preguntas de evaluación económica. En Colombia ya hay un caso real con datos: mensajes de texto para la vacunación contra el VPH a un costo cercano a 1.600 pesos por niño vacunado adicional.", refs: [] }
+    { title: "Hay que evaluarlos como cualquier tecnología", text: "¿Cuánto cuesta cada punto de adherencia ganado? ¿Cuánto dura el efecto? ¿A quién beneficia? Son preguntas de evaluación económica. En Colombia ya hay un caso real con datos: mensajes de texto para la vacunación contra el VPH a un costo cercano a 1.600 pesos por niño vacunado adicional.", refs: [], calc: true }
   ],
 
   audiences: [
@@ -100,12 +100,18 @@ const DATA = {
   /* ---------------- 03 EVIDENCIA ---------------- */
   evidence: {
     intro: "Síntesis de los metaanálisis y revisiones sistemáticas incluidos en la revisión de alcance (eje 2: 82 documentos, 61 de ellos revisiones sistemáticas o metaanálisis). Cada cifra enlaza al documento original.",
+    howToRead: [
+      { k: "d o g", v: "Diferencia estandarizada entre el grupo intervenido y el de comparación. Por convención, 0,2 es un efecto pequeño, 0,5 mediano y 0,8 grande." },
+      { k: "RR", v: "Riesgo relativo: cuántas veces es más probable la conducta con la intervención. RR 2 = el doble; RR 1,30 = un 30 % más." },
+      { k: "OR", v: "Razón de odds: se lee parecido al RR, pero exagera el efecto cuando la conducta es frecuente." },
+      { k: "I²", v: "Cuánto difieren los estudios entre sí. Por encima de 75 % la variación es alta y el promedio debe leerse con cautela." }
+    ],
     groups: [
       { id: "incentivos", title: "Incentivos financieros", color: "cat-c", items: [
-        { stat: "d = 0,58", text: "Efecto mediano del manejo de contingencias sobre la abstinencia (y d = 0,62 sobre la adherencia).", refs: ["Bolívar et al., 2021"] },
-        { stat: "RR 2,42", text: "Más testeo de VIH con incentivos; la adherencia antirretroviral mejora con RR 1,30 y la continuidad de la atención con RR 1,24.", refs: ["Krishnamoorthy et al., 2021"] },
-        { stat: "RR 2,69", text: "Más mujeres se tamizan para cáncer al mes con un incentivo (RR 1,57 al año); los montos de USD 10–25 fueron frecuentes.", refs: ["Lumia et al., 2026"] },
-        { stat: "OR 2,78", text: "Mayor inscripción en programas de promoción de la salud (y OR 2,54 en retención), con heterogeneidad alta.", refs: ["Michaud et al., 2022"] },
+        { stat: "Efecto mediano", metric: "d = 0,58 en abstinencia · d = 0,62 en adherencia", text: "En pacientes en tratamiento por consumo de opioides, premiar con dinero o vales cada vez que se verifica la conducta (manejo de contingencias) mejora la abstinencia y la adherencia al tratamiento con un efecto de tamaño mediano.", refs: ["Bolívar et al., 2021"] },
+        { stat: "2,4 veces más pruebas de VIH", metric: "RR 2,42 · adherencia RR 1,30 · continuidad RR 1,24", text: "Con un incentivo, la probabilidad de hacerse la prueba de VIH es 2,4 veces la de quien no lo recibe. La adherencia al tratamiento antirretroviral sube un 30 % y la continuidad de la atención un 24 %.", refs: ["Krishnamoorthy et al., 2021"] },
+        { stat: "2,7 veces más tamizaje", metric: "RR 2,69 al mes · RR 1,57 al año", text: "Un incentivo económico multiplica por 2,7 la participación de las mujeres en el tamizaje de cáncer de cuello uterino, mama y colon cuando se mide al mes; al año, el aumento es de 57 %. Los montos de 10 a 25 dólares fueron frecuentes.", refs: ["Lumia et al., 2026"] },
+        { stat: "Más inscripción y permanencia", metric: "OR 2,78 inscripción · OR 2,54 retención", text: "Los incentivos casi triplican las probabilidades (odds) de inscribirse en programas de promoción de la salud y multiplican por 2,5 las de permanecer en ellos, aunque los resultados varían mucho entre estudios.", refs: ["Michaud et al., 2022"] },
         { stat: "↑ vacunación", text: "Los incentivos aumentan significativamente la vacunación contra la hepatitis B en usuarios de sustancias.", refs: ["Wang et al., 2024"] },
         { stat: "≥ 1.000 pasos", text: "Los incentivos de corto plazo aumentan la actividad física en al menos 1.000 pasos al día; el tamaño, la duración y el uso de dispositivos moderan el efecto.", refs: ["Salmani et al., 2025"] },
         { stat: "Tabaco y peso", text: "Promueven la cesación tabáquica y una pérdida de peso modesta, sin efecto sobre el colesterol LDL ni la presión arterial.", refs: ["Prigozin et al., 2026"] }
@@ -113,8 +119,8 @@ const DATA = {
       { id: "nudges", title: "Nudges", color: "cat-d", items: [
         { stat: "Default", text: "Las intervenciones basadas en defaults fueron las más efectivas para el tamizaje colorrectal; los incentivos mostraron evidencia mixta.", refs: ["Taylor et al., 2022"] },
         { stat: "Equitativo", text: "Los defaults en elecciones alimentarias funcionan de forma similar entre grupos de edad, género y educación.", refs: ["Lemken et al., 2026"] },
-        { stat: "g = 0,68", text: "Mejora de la adherencia a medicamentos con nudges, con heterogeneidad muy alta (I² = 96 %).", refs: ["Zhou et al., 2025"] },
-        { stat: "HbA1c −0,50", text: "Recordatorios y resurtido automático mejoran el automonitoreo y reducen la HbA1c y la presión sistólica (−4,47 mmHg).", refs: ["Yu et al., 2025"] },
+        { stat: "Mejor adherencia a medicamentos", metric: "g = 0,68 · I² = 96 %", text: "En adultos con enfermedades crónicas, los nudges mejoran la adherencia con un efecto entre mediano y grande. Pero los estudios difieren muchísimo entre sí, así que el promedio esconde resultados muy distintos.", refs: ["Zhou et al., 2025"] },
+        { stat: "Mejor control metabólico", metric: "HbA1c −0,50 · presión sistólica −4,47 mmHg", text: "Recordatorios y resurtido automático mejoran el automonitoreo, bajan la hemoglobina glucosilada en medio punto y la presión sistólica en unos 4,5 mmHg.", refs: ["Yu et al., 2025"] },
         { stat: "↓ inasistencia", text: "Los recordatorios reducen la inasistencia a citas; casi todos los demás enfoques conductuales siguen sin probarse en ese desenlace.", refs: ["Werner et al., 2023"] },
         { stat: "Vacunación", text: "Los nudges muestran potencial para aumentar la confianza y la cobertura de vacunación, pero su efecto varía sustancialmente según el contexto.", refs: ["Reñosa et al., 2021"] },
         { stat: "EPOC", text: "Mejoran el autocuidado en la EPOC, sobre todo la adherencia, la técnica inhalatoria y la vacunación.", refs: ["Wu et al., 2024"] },
@@ -124,7 +130,7 @@ const DATA = {
         { stat: "Persistencia", text: "Sin efecto en el seguimiento de la actividad física tras retirar el incentivo, aunque en diabetes el cambio se mantuvo en adultos.", refs: ["Reisgies et al., 2023", "Zhang et al., 2024b"] },
         { stat: "Relevancia clínica", text: "La adherencia sube de forma significativa pero quizá irrelevante en lo clínico; en peso, un metaanálisis no encuentra efecto y otro sí, a corto plazo.", refs: ["Winberg et al., 2025", "Farooque et al., 2026", "Hondmann et al., 2026"] },
         { stat: "Encuadre", text: "El encuadre en pérdidas está entre lo más consistente en una revisión, pero no supera al de ganancias para dejar de fumar.", refs: ["Sanny et al., 2026", "Waheed, 2023"] },
-        { stat: "0,063", text: "Efecto medio de incentivos, nudges y boosts tras corregir el sesgo de publicación (meta-metaanálisis, preprint).", refs: ["Kaiser et al., 2025"] },
+        { stat: "El efecto real es pequeño", metric: "0,173 publicado → 0,063 corregido", text: "Un meta-metaanálisis (preprint) que reúne 269 metaanálisis de salud, finanzas y sostenibilidad encontró que los estudios con resultados nulos se publican menos. Al corregir ese sesgo, el efecto medio de incentivos, nudges y boosts cae a cerca de un tercio y queda muy por debajo de 0,2, el umbral de un efecto pequeño.", refs: ["Kaiser et al., 2025"] },
         { stat: "Efectos adversos", text: "Habituación, efectos contraproducentes y efecto techo; sesgo de publicación significativo en el tamizaje colorrectal.", refs: ["Lee et al., 2024", "Ahadinezhad et al., 2024"] },
         { stat: "No todos responden igual", text: "La respuesta a los nudges varía con la personalidad y el género, aunque el tipo de nudge y la conducta objetivo pesan más que esas tendencias.", refs: ["Wagler et al., 2024"] },
         { stat: "Nudges oscuros", text: "Algunas características de los juegos de azar funcionan como «nudges oscuros» que explotan las decisiones de los jugadores: la misma técnica sirve para ayudar o para dañar.", refs: ["Fortier et al., 2024"] }
@@ -136,6 +142,11 @@ const DATA = {
 
   /* ---------------- 04 CALCULADORA ---------------- */
   calculator: {
+    cta: {
+      title: "¿Cuánto cuesta ganar un punto de adherencia?",
+      text: "Pruébalo con un caso real colombiano: mensajes de texto para la vacunación contra el VPH, a unos 1.630 pesos por niño vacunado adicional. Luego escribe los datos de tu programa y descarga el resultado en Excel, con las fórmulas.",
+      button: "Abrir la calculadora"
+    },
     intro: "Plantilla para estimar cuánto cuesta ganar un punto porcentual de adherencia (o de cualquier conducta medida como proporción: vacunación, tamizaje, asistencia) con una intervención conductual. Trae dos escenarios por defecto —un caso real colombiano y el ejercicio de clase— y un tercero para tus propios datos.",
     fields: [
       { id: "n", label: "Personas intervenidas", unit: "personas", step: 1, min: 1, help: "Número de personas que reciben el nudge o el incentivo." },

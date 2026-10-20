@@ -14,7 +14,7 @@ Explorador interactivo para estudiantes de administración en salud, equipos de 
    - el ejercicio de clase, con datos ilustrativos;
    - un escenario editable para tu programa.
 
-   Exporta a CSV, genera un enlace con los datos cargados y ofrece una plantilla Excel con fórmulas (`downloads/plantilla_costo_punto_adherencia.xlsx`).
+   Exporta a Excel el escenario activo con fórmulas vivas y una hoja que compara los tres escenarios (generado en el navegador por `js/xlsx.js`, sin dependencias), genera un enlace con los datos cargados y ofrece una plantilla Excel en blanco (`downloads/plantilla_costo_punto_adherencia.xlsx`). El encabezado lleva un acceso directo a la calculadora.
 5. **Colombia**: ocho normas y programas verificados en fuente oficial, clasificados como nudge o incentivo, más ideas para instituciones.
 6. **Ética y diseño**: posiciones de la literatura y una lista de chequeo interactiva.
 7. **Glosario**: 29 términos.
@@ -35,6 +35,7 @@ HTML, CSS y JavaScript sin dependencias ni paso de compilación, servido tal cua
 
 - `js/data.js` y `js/studies.js` guardan el contenido;
 - `js/app.js` contiene el motor y los render;
+- `js/xlsx.js` escribe el Excel de la calculadora (ZIP y Office Open XML mínimos, sin librerías);
 - `css/style.css` es el sistema de diseño compartido con los exploradores hermanos;
 - `css/app.css` reúne los componentes propios.
 

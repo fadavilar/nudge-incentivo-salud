@@ -125,7 +125,7 @@
       subs:[ { id:"calc-plantilla", label:"Plantilla interactiva" }, { id:"calc-comparar", label:"Comparar escenarios" }, { id:"calc-formulas", label:"Cómo se calcula" } ] },
     { id:"colombia", num:"05", title:"Ejemplos en el escenario colombiano", sub:"Normas y programas reales clasificados por mecanismo, más ideas para tu institución", open:false,
       subs:[ { id:"col-ejemplos", label:"Ocho ejemplos verificados" }, { id:"col-ideas", label:"Ideas para tu institución" } ] },
-    { id:"etica", num:"06", title:"Ética y diseño", sub:"Cuándo es legítimo empujar o pagar, y una lista de chequeo antes de lanzar una intervención", open:false,
+    { id:"etica", num:"06", title:"Ética y diseño", sub:"¿Cuándo es legítimo empujar o pagar? Incluye una lista de chequeo antes de lanzar una intervención", open:false,
       subs:[ { id:"etica-posiciones", label:"Tres posiciones" }, { id:"etica-checklist", label:"Lista de chequeo" } ] },
     { id:"glosario", num:"07", title:"Glosario", sub:DATA.glossary.length+" términos con su equivalente en inglés", open:false },
     { id:"metodos", num:"08", title:"Metodología y fuentes", sub:"De dónde sale el contenido, qué limitaciones tiene y los "+DATA.studies.length+" documentos citados", open:false,
@@ -190,6 +190,12 @@
     document.getElementById("hero-framework").textContent = m.framework;
     document.getElementById("hero-period").textContent = m.period;
     document.getElementById("byline").innerHTML = `<strong>${escapeXML(m.author)}</strong>, ${escapeXML(m.credentials)} · ${escapeXML(m.affiliation)}`;
+    const cta = DATA.calculator.cta;
+    const ctaBtn = el("button",{class:"btn btn-primary hero-cta-btn", type:"button"},[cta.button+" →"]);
+    ctaBtn.addEventListener("click", ()=> goTo("calculadora","calc-plantilla"));
+    document.getElementById("hero-cta").appendChild(el("div",{class:"hero-cta-box"},[
+      el("div",{class:"hero-cta-text"},[ el("p",{class:"hero-cta-title"},[cta.title]), el("p",{},[cta.text]) ]),
+      ctaBtn ]));
     const grid = document.getElementById("stat-grid");
     DATA.heroCards.forEach(c=>{
       const s = SECTIONS.find(x=>x.id===c.sec);
@@ -230,7 +236,8 @@
     const body = document.getElementById("body-resumen");
     sectionDivider(body, "resumen-mensajes", "Tres mensajes clave", "Lo esencial de la semana en tres ideas. Cada una enlaza a la evidencia que la sustenta.");
     const grid = el("div",{class:"abstract-grid"});
-    DATA.keyMessages.forEach((k,i)=> grid.appendChild(el("div",{class:"pcc-card"},[ el("div",{class:"k"},[(i+1)+" · "+k.title]), el("p",{},[k.text]), k.refs.length ? refChips(k.refs) : null ])));
+    DATA.keyMessages.forEach((k,i)=> grid.appendChild(el("div",{class:"pcc-card"},[ el("div",{class:"k"},[(i+1)+" · "+k.title]), el("p",{},[k.text]), k.refs.length ? refChips(k.refs) : null,
+      k.calc ? el("div",{class:"btn-row"},[ jumpButton("Calcularlo con la calculadora →","calculadora","calc-plantilla") ]) : null ])));
     body.appendChild(grid);
     sectionDivider(body, "resumen-perfiles", "Cómo leer esta app según tu perfil", "Tres rutas sugeridas. Todas las secciones siguen colapsadas hasta que las abras.");
     const aud = el("div",{class:"audience-grid"});
@@ -332,11 +339,15 @@
     const body = document.getElementById("body-evidencia");
     const ev = DATA.evidence;
     body.appendChild(el("p",{},[ev.intro]));
+    body.appendChild(el("div",{class:"card how-to-read"},[
+      el("strong",{},["Cómo leer las cifras"]),
+      el("dl",{class:"htr-list"}, ev.howToRead.reduce((acc,x)=> acc.concat([ el("dt",{},[x.k]), el("dd",{},[x.v]) ]), [])),
+    ]));
     ev.groups.forEach(g=>{
       sectionDivider(body, EV_ANCHOR[g.id], g.title, null);
       const grid = el("div",{class:"evidence-grid"});
       g.items.forEach(it=> grid.appendChild(el("div",{class:"evidence-card "+g.color},[
-        el("div",{class:"evidence-stat"},[it.stat]), el("p",{},[it.text]), refChips(it.refs) ])));
+        el("div",{class:"evidence-stat"},[it.stat]), it.metric ? el("div",{class:"evidence-metric"},[it.metric]) : null, el("p",{},[it.text]), refChips(it.refs) ])));
       body.appendChild(grid);
     });
     body.appendChild(el("div",{class:"card", style:"margin-top:16px"},[ el("strong",{},["¿Y la evidencia económica?"]), el("p",{style:"margin:6px 0 8px"},[ev.economics]), refChips(ev.economicsRefs) ]));
@@ -414,12 +425,13 @@
     const actions = el("div",{class:"btn-row calc-actions"});
     const resetBtn = el("button",{class:"btn btn-small", type:"button"},["Restaurar valores del escenario"]);
     resetBtn.addEventListener("click", ()=>{ const p = C.presets.find(x=>x.id===calcActive); calcState[calcActive] = Object.assign({}, p.values); refreshAll(); });
-    const csvBtn = el("button",{class:"btn btn-small", type:"button"},["Descargar resultados (CSV)"]);
-    csvBtn.addEventListener("click", downloadCalcCSV);
+    const xlsBtn = el("button",{class:"btn btn-small btn-primary", type:"button"},["Descargar en Excel (con fórmulas)"]);
+    xlsBtn.addEventListener("click", downloadCalcXLSX);
     const linkBtn = el("button",{class:"btn btn-small", type:"button"},["Copiar enlace con estos datos"]);
     linkBtn.addEventListener("click", ()=> copyCalcLink(linkBtn));
-    const xlsx = el("a",{class:"btn btn-small btn-primary", href:"downloads/plantilla_costo_punto_adherencia.xlsx", download:"plantilla_costo_punto_adherencia.xlsx"},["Descargar plantilla Excel"]);
-    [resetBtn, csvBtn, linkBtn, xlsx].forEach(b=> actions.appendChild(b));
+    const xlsx = el("a",{class:"btn btn-small", href:"downloads/plantilla_costo_punto_adherencia.xlsx", download:"plantilla_costo_punto_adherencia.xlsx"},["Plantilla Excel en blanco"]);
+    [xlsBtn, linkBtn, resetBtn, xlsx].forEach(b=> actions.appendChild(b));
+    form.appendChild(el("p",{class:"calc-help"},["El Excel trae el escenario activo con sus fórmulas vivas y una hoja que compara los tres escenarios: cambia cualquier dato en Excel y los resultados se recalculan."]));
     form.appendChild(actions);
 
     const results = el("div",{class:"calc-results", "aria-live":"polite"});
@@ -522,22 +534,98 @@
     return wrap;
   }
 
-  function downloadCalcCSV(){
-    const C = DATA.calculator, p = C.presets.find(x=>x.id===calcActive), v = calcState[calcActive], r = compute(v);
-    const rows = C.fields.map(f=>[ "Entrada", f.label, v[f.id]==null ? "" : v[f.id], f.unit ]).concat([
-      ["Resultado","Diferencia", r.delta, "puntos porcentuales"],
-      ["Resultado","Personas adicionales", r.extra, "personas"],
-      ["Resultado","Costo total", r.total, "COP"],
-      ["Resultado","Costo de un punto de adherencia", r.perPoint, "COP por punto"],
-      ["Resultado","Personas a intervenir por cada adicional (NNT)", r.nnt, "personas"],
-      ["Resultado","Costo por persona adicional", r.perExtra, "COP"],
-      ["Resultado","Costo por persona adicional sostenida", r.hasSus ? r.perExtraSus : "", "COP"],
-    ]);
-    const csv = toCSV(["Tipo","Concepto","Valor","Unidad"], [["Escenario", p.name, "", ""]].concat(rows));
-    const blob = new Blob(["﻿"+csv], {type:"text/csv;charset=utf-8;"});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a"); a.href = url; a.download = "costo_punto_adherencia_"+calcActive+".csv";
-    document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+  /* Exportación a Excel: el escenario activo con fórmulas vivas y una hoja que compara los tres */
+  const XL_RESULTS = [
+    { id:"d",   label:"Diferencia", unit:"puntos porcentuales", st:"dec2", f:"{t}-{b}", how:"Tasa con la intervención − tasa sin ella", val:r=> r.delta },
+    { id:"rel", label:"Diferencia relativa", unit:"%", st:"dec1", f:'IF({b}>0,{d}/{b}*100,"")', how:"Diferencia / tasa sin intervención × 100", val:r=> r.relative },
+    { id:"x",   label:"Personas adicionales con la conducta", unit:"personas", st:"dec1", f:"{n}*{d}/100", how:"Personas intervenidas × diferencia / 100", val:r=> r.extra },
+    { id:"tot", label:"Costo total", unit:"COP", st:"money", f:"{fx}+{n}*{cp}", how:"Costo fijo + personas × costo por persona", val:r=> r.total },
+    { id:"pp",  label:"Costo de un punto de adherencia", unit:"COP por punto", st:"moneyHL", f:'IF({d}>0,{tot}/{d},"")', how:"Costo total / diferencia", val:r=> r.perPoint },
+    { id:"nnt", label:"Personas a intervenir por cada adicional (NNT)", unit:"personas", st:"dec1", f:'IF({d}>0,100/{d},"")', how:"100 / diferencia", val:r=> r.nnt },
+    { id:"pe",  label:"Costo por persona adicional", unit:"COP", st:"moneyHL", f:'IF({x}>0,{tot}/{x},"")', how:"Costo total / personas adicionales", val:r=> r.perExtra },
+    { id:"ds",  label:"Diferencia sostenida", unit:"puntos porcentuales", st:"dec2", f:'IF({s}="","",{s}-{b})', how:"Tasa sostenida − tasa sin intervención (si hay dato)", val:r=> r.hasSus ? r.deltaSus : "" },
+    { id:"pes", label:"Costo por persona adicional sostenida", unit:"COP", st:"money", f:'IF({s}="","",IF({s}-{b}>0,{tot}/({n}*({s}-{b})/100),"Sin efecto sostenido"))', how:"Costo total / personas que mantienen la conducta", val:r=> r.hasSus ? (r.perExtraSus!=null ? r.perExtraSus : "Sin efecto sostenido") : "" },
+    { id:"ver", label:"Frente al valor de referencia", unit:"", st:"label", f:'IF(OR({w}="",{pe}=""),"",IF({pe}<={w},"Por debajo del valor de referencia","Por encima del valor de referencia"))', how:"Compara el costo por persona adicional con el valor de referencia", val:r=> (r.hasWtp && r.perExtra!=null) ? (r.below ? "Por debajo del valor de referencia" : "Por encima del valor de referencia") : "" },
+  ];
+  const XL_FIELD_KEY = { n:"n", costPerson:"cp", fixed:"fx", base:"b", treat:"t", sustained:"s", wtp:"w" };
+  const XL_INT_FIELDS = { n:true, fixed:true, wtp:true };
+  function xlFormula(tpl, refs){ return tpl.replace(/\{(\w+)\}/g, (m,k)=> refs[k]); }
+  function xlNum(x){ return (typeof x === "number" && isFinite(x)) ? Math.round(x*1e6)/1e6 : (x==null ? "" : x); }
+  function xlRowHeight(text, chars){ return Math.max(15, Math.ceil(String(text).length / chars) * 14 + 4); }
+
+  function calcWorkbook(){
+    const C = DATA.calculator, S = MiniXLSX.S;
+    const p = C.presets.find(x=>x.id===calcActive), v = calcState[calcActive], r = compute(v);
+    const today = new Date().toLocaleDateString("es-CO",{ day:"2-digit", month:"2-digit", year:"numeric" });
+    const appUrl = location.origin + location.pathname;
+    const txt = (t, st)=> ({ v:t, s:S[st||"normal"] });
+
+    /* Hoja 1: escenario activo */
+    const rows = [], merges = [];
+    rows.push([ txt("Costo de un punto de adherencia","title") ]);
+    rows.push([ txt("Escenario: "+p.name,"bold") ]);
+    rows.push([ txt("Exportado el "+today+" desde "+appUrl,"subtitle") ]);
+    rows.push(null);
+    rows.push([ txt("Dato de entrada","header"), txt("Valor","header"), txt("Unidad","header"), txt("Qué significa","header") ]);
+    const refs = {};
+    C.fields.forEach(f=>{
+      refs[XL_FIELD_KEY[f.id]] = "B"+(rows.length+1);
+      const val = v[f.id]==null || v[f.id]==="" ? null : +v[f.id];
+      rows.push({ cells:[ txt(f.label,"label"), { v:val, s: XL_INT_FIELDS[f.id] ? S.inInt : S.inDec }, txt(f.unit,"label"), txt(f.help,"text") ], height: xlRowHeight(f.help, 60) });
+    });
+    rows.push(null);
+    rows.push([ txt("Resultado","header"), txt("Valor","header"), txt("Unidad","header"), txt("Cómo se calcula","header") ]);
+    XL_RESULTS.forEach(x=>{
+      refs[x.id] = "B"+(rows.length+1);
+      rows.push([ txt(x.label,"labelBold"), { f: xlFormula(x.f, refs), v: xlNum(x.val(r)), s: S[x.st] }, txt(x.unit,"label"), txt(x.how,"text") ]);
+    });
+    rows.push(null);
+    rows.push([ txt("Las celdas amarillas son los datos de entrada: cámbialas y Excel recalcula los resultados.","note") ]); merges.push("A"+rows.length+":D"+rows.length);
+    rows.push(null);
+    rows.push([ txt("Nota del escenario","bold") ]);
+    rows.push({ cells:[ txt(p.note,"note") ], height: xlRowHeight(p.note, 140) }); merges.push("A"+rows.length+":D"+rows.length);
+    if(p.source){ rows.push({ cells:[ txt("Fuente: "+p.source.label+" "+p.source.url,"note") ], height: xlRowHeight(p.source.label+p.source.url, 140) }); merges.push("A"+rows.length+":D"+rows.length); }
+    rows.push(null);
+    rows.push([ txt("Antes de usar el resultado","bold") ]);
+    C.caveats.forEach(c=>{ rows.push({ cells:[ txt("• "+c,"note") ], height: xlRowHeight(c, 140) }); merges.push("A"+rows.length+":D"+rows.length); });
+    rows.push(null);
+    rows.push([ txt(DATA.meta.author+", "+DATA.meta.credentials+" · "+DATA.citation.url+" · "+DATA.meta.license.name,"subtitle") ]);
+    const sheet1 = { name:"Escenario activo", cols:[46, 18, 20, 58], rows, merges };
+
+    /* Hoja 2: comparación de los tres escenarios */
+    const presets = C.presets, rows2 = [];
+    rows2.push([ txt("Comparación de escenarios","title") ]);
+    rows2.push([ txt("Valores vigentes en la app al exportar (incluidos tus cambios). Cada columna tiene sus propias fórmulas.","subtitle") ]);
+    rows2.push(null);
+    rows2.push([ txt("Dato de entrada","header") ].concat(presets.map(x=> txt(x.short,"header"))));
+    const colRefs = presets.map(()=> ({}));
+    C.fields.forEach(f=>{
+      const rowNum = rows2.length + 1;
+      rows2.push([ txt(f.label+" ("+f.unit+")","label") ].concat(presets.map((x,k)=>{
+        colRefs[k][XL_FIELD_KEY[f.id]] = MiniXLSX.colName(k+1)+rowNum;
+        const val = calcState[x.id][f.id];
+        return { v: val==null || val==="" ? null : +val, s: XL_INT_FIELDS[f.id] ? S.inInt : S.inDec };
+      })));
+    });
+    rows2.push([ txt("Resultado","header") ].concat(presets.map(()=> txt("","header"))));
+    XL_RESULTS.forEach(x=>{
+      const rowNum = rows2.length + 1;
+      rows2.push([ txt(x.label+(x.unit?" ("+x.unit+")":""),"labelBold") ].concat(presets.map((pp,k)=>{
+        colRefs[k][x.id] = MiniXLSX.colName(k+1)+rowNum;
+        return { f: xlFormula(x.f, colRefs[k]), v: xlNum(x.val(compute(calcState[pp.id]))), s: S[x.st] };
+      })));
+    });
+    const sheet2 = { name:"Comparación", cols:[50, 24, 24, 24], rows: rows2 };
+    return [sheet1, sheet2];
+  }
+  function calcXLSXBlob(){
+    return new Blob([MiniXLSX.build(calcWorkbook())], {type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+  }
+  function downloadCalcXLSX(){
+    const url = URL.createObjectURL(calcXLSXBlob());
+    const a = document.createElement("a"); a.href = url; a.download = "costo_punto_adherencia_"+calcActive+".xlsx";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(()=> URL.revokeObjectURL(url), 1000);
   }
   function copyCalcLink(btn){
     const v = calcState[calcActive];
@@ -856,10 +944,7 @@
     body.appendChild(el("div",{class:"a11y-list-toggle"},[btn]));
     body.appendChild(listEl);
   }
-  function toCSV(headers, rows){
-    const esc = (v)=>{ const s = String(v==null?"":v); return /[",\n;]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s; };
-    return [headers.map(esc).join(","), ...rows.map(r=>r.map(esc).join(","))].join("\n");
-  }
+
 
   /* ============================================================
      SIDEBAR TOC + SCROLLSPY + BREADCRUMB
