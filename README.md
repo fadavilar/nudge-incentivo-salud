@@ -39,6 +39,8 @@ HTML, CSS y JavaScript sin dependencias ni paso de compilación, servido tal cua
 - `css/style.css` es el sistema de diseño compartido con los exploradores hermanos;
 - `css/app.css` reúne los componentes propios.
 
+Al publicar cambios, actualiza el sufijo `?v=` de los CSS y JS en `index.html` para que los navegadores no sirvan la versión en caché.
+
 Explorador hermano: [Fundamentos de economía aplicada a la salud](https://fadavilar.github.io/fundamentos-economia-salud/).
 
 ## Autoría y licencia
