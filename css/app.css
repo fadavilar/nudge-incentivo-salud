@@ -1,0 +1,126 @@
+/* ============================================================
+   Nudge o incentivo — componentes propios (se carga después de style.css)
+   ============================================================ */
+:root{ --nudge: var(--chip-d); --incentive: var(--chip-c); }
+.hero-jump{ cursor:pointer; text-align:left; font:inherit; color:inherit; transition: transform .15s ease, border-color .15s ease; }
+.hero-jump:hover, .hero-jump:focus-visible{ transform: translateY(-2px); border-color: var(--primary); }
+.hero-jump .value{ font-size:1.25rem; }
+
+/* Tabla comparativa */
+.compare-table th[scope="row"]{ white-space:nowrap; color: var(--text); background: var(--bg); font-weight:700; }
+.compare-table thead .col-nudge{ background: color-mix(in srgb, var(--nudge) 18%, transparent); color: var(--text); }
+.compare-table thead .col-incentive{ background: color-mix(in srgb, var(--incentive) 20%, transparent); color: var(--text); }
+.compare-table .shared-row td{ text-align:center; font-weight:700; color: var(--primary); background: var(--primary-tint); }
+
+/* Chips de tipo */
+.kind-chip{ display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.02em; padding:2px 9px; border-radius:999px; color:#fff; margin-bottom:6px; align-self:flex-start; }
+.kind-chip.kind-nudge{ background: var(--nudge); }
+.kind-chip.kind-incentive{ background: var(--incentive); }
+:root[data-theme="dark"] .kind-chip{ color:#0e141b; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .kind-chip{ color:#0e141b; } }
+.family-grid .mini-card{ border-top:3px solid var(--nudge); }
+.family-grid .mini-card.family-incentive{ border-top-color: var(--incentive); }
+.mini-card{ display:flex; flex-direction:column; }
+
+/* Diagrama de mecanismos */
+.mech-node rect{ stroke-width:1.6; }
+.mech-node.mech-neutral rect{ fill: var(--surface); stroke: var(--text-muted); }
+.mech-node.mech-nudge rect{ fill: color-mix(in srgb, var(--nudge) 16%, var(--surface)); stroke: var(--nudge); }
+.mech-node.mech-incentive rect{ fill: color-mix(in srgb, var(--incentive) 18%, var(--surface)); stroke: var(--incentive); }
+.mech-node.mech-warn rect{ fill: var(--danger-tint); stroke: var(--danger); stroke-dasharray:5 4; }
+.mech-node text{ fill: var(--text); font-size:15px; font-weight:600; }
+.mech-node.active rect, .mech-node:focus rect{ stroke-width:3; }
+.mech-node{ cursor:pointer; outline:none; }
+.mech-edge{ stroke: var(--text-muted); stroke-width:1.8; }
+.mech-edge-nudge{ stroke: var(--nudge); stroke-width:2.4; }
+.mech-edge-incentivo{ stroke: var(--incentive); stroke-width:2.4; }
+.edge-label-pill rect{ fill: var(--surface); stroke-width:1.4; }
+.edge-label-pill.pill-nudge rect{ stroke: var(--nudge); }
+.edge-label-pill.pill-incentive rect{ stroke: var(--incentive); }
+.edge-label-pill text{ fill: var(--text); font-size:13px; font-weight:700; }
+
+/* Evidencia */
+.evidence-grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(230px,1fr)); gap:12px; margin:8px 0 6px; }
+.evidence-card{ background: var(--surface); border:1px solid var(--border); border-left-width:4px; border-radius: var(--radius-sm); padding:12px 14px; }
+.evidence-card.cat-c{ border-left-color: var(--incentive); }
+.evidence-card.cat-d{ border-left-color: var(--nudge); }
+.evidence-card.cat-b{ border-left-color: var(--danger); }
+.evidence-stat{ font-size:1.25rem; font-weight:800; color: var(--text); margin-bottom:4px; }
+.evidence-card p{ font-size:.86rem; margin:0 0 8px; }
+
+/* Calculadora */
+.calc-tabs{ margin:8px 0 10px; }
+.calc-note{ background: var(--primary-tint); border-radius: var(--radius-sm); padding:10px 14px; margin-bottom:14px; font-size:.86rem; }
+.calc-note p{ margin:0 0 4px; }
+.calc-layout{ display:grid; grid-template-columns: minmax(0,1fr) minmax(0,1.1fr); gap:18px; align-items:start; }
+.calc-form{ background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); padding:14px; }
+.calc-field{ margin-bottom:12px; }
+.calc-field label{ display:block; font-weight:600; font-size:.86rem; margin-bottom:4px; }
+.calc-field .opt{ font-weight:400; color: var(--text-muted); }
+.calc-input-row{ display:flex; align-items:center; gap:8px; }
+.calc-input-row input{ flex:1; min-width:0; font:inherit; font-size:1rem; padding:8px 10px; border:1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); color: var(--text); }
+.calc-input-row input:focus{ outline:2px solid var(--primary); outline-offset:1px; }
+.calc-input-row .unit{ font-size:.8rem; color: var(--text-muted); min-width:58px; }
+.calc-help{ font-size:.76rem; color: var(--text-muted); margin:4px 0 0; }
+.calc-actions{ margin-top:6px; }
+.calc-results{ position:sticky; top:84px; }
+.result-grid{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; }
+.result-card{ background: var(--surface); border:1px solid var(--border); border-radius: var(--radius-sm); padding:10px 12px; }
+.result-card.hl{ border-color: var(--primary); background: var(--primary-tint); }
+.result-card.warnc{ grid-column: 1 / -1; border-color: var(--accent); }
+.result-card .rk{ font-size:.74rem; font-weight:700; color: var(--text-muted); text-transform:uppercase; letter-spacing:.03em; }
+.result-card .rv{ font-size:1.3rem; font-weight:800; color: var(--text); margin:2px 0; overflow-wrap:anywhere; }
+.result-card .rd{ font-size:.76rem; color: var(--text-muted); }
+.calc-warn{ background: var(--danger-tint); color: var(--danger); border-radius: var(--radius-sm); padding:8px 10px; font-size:.84rem; font-weight:600; }
+.calc-verdict{ border-radius: var(--radius-sm); padding:10px 12px; font-weight:600; font-size:.88rem; margin-top:10px; }
+.calc-verdict.ok{ background: var(--success-tint); color: var(--success); }
+.calc-verdict.no{ background: var(--danger-tint); color: var(--danger); }
+.chart-box{ background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); padding:10px; margin-top:12px; overflow-x:auto; }
+.chart-box svg{ min-width:520px; }
+.chart-title{ fill: var(--text); font-size:14px; font-weight:700; }
+.chart-grid{ stroke: var(--border); stroke-width:1; }
+.chart-tick{ fill: var(--text-muted); font-size:12px; }
+.chart-label{ fill: var(--text); font-size:13px; font-weight:600; }
+.chart-value{ fill: var(--text); font-size:13px; font-weight:700; }
+.chart-bar{ fill: var(--primary); }
+.chart-bar.bar-compensar{ fill: var(--nudge); }
+.chart-bar.bar-clase{ fill: var(--incentive); }
+.chart-bar.bar-propio{ fill: var(--chip-a); }
+
+/* Colombia */
+.colombia-grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap:14px; margin:10px 0; }
+.col-card{ background: var(--surface); border:1px solid var(--border); border-top:4px solid var(--nudge); border-radius: var(--radius); padding:14px; display:flex; flex-direction:column; gap:4px; }
+.col-card.kind-border-incentive{ border-top-color: var(--incentive); }
+.col-card h4{ margin:2px 0 4px; font-size:1rem; }
+.col-card p{ font-size:.86rem; margin:0 0 6px; }
+.col-head{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.col-head .kind-chip{ margin-bottom:0; }
+.col-mech{ font-size:.76rem; font-weight:600; color: var(--text-muted); }
+.col-year{ font-size:.74rem; color: var(--text-muted); margin-left:auto; }
+.col-why{ background: var(--bg); border-radius: var(--radius-sm); padding:8px 10px; }
+.col-foot{ font-size:.8rem; margin-top:auto; }
+.col-foot a{ overflow-wrap:anywhere; }
+
+/* Métodos */
+.flow-steps{ display:grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap:10px; margin:12px 0; }
+.flow-step{ background: var(--surface); border:1px solid var(--border); border-radius: var(--radius-sm); padding:10px; text-align:center; }
+.flow-step .fs-n{ font-size:1.4rem; font-weight:800; color: var(--primary); }
+.flow-step .fs-l{ font-size:.78rem; color: var(--text-muted); }
+.studies-table td{ font-size:.8rem; vertical-align:top; }
+
+@media (max-width: 860px){
+  .calc-layout{ grid-template-columns: 1fr; }
+  .calc-results{ position:static; }
+}
+@media (max-width: 420px){
+  .result-grid{ grid-template-columns: 1fr; }
+  .colombia-grid{ grid-template-columns: 1fr; }
+}
+@media print{
+  .calc-actions{ display:none !important; }
+  .calc-results{ position:static; }
+}
+
+/* Insignia de licencia: que no desborde en móvil */
+.cc-badge{ max-width:100%; flex-wrap:wrap; }
+.cc-badge span{ white-space:normal; overflow-wrap:anywhere; min-width:0; }
