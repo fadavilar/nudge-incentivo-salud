@@ -23,7 +23,7 @@ Explorador interactivo para estudiantes de administración en salud, equipos de 
 
 ## Fuentes y disciplina de contenido
 
-- **Revisión de alcance de base:** marco PCC y reporte según PRISMA-ScR, con 174 documentos de 2021 a 2026. Las búsquedas se hicieron el 18 de octubre de 2026 en PubMed, Embase, Cochrane, SciELO, RePEc y Google Scholar, más literatura gris de la OMS y el BID. La incorporación de LILACS está en curso.
+- **Revisión de alcance de base:** marco PCC y reporte según PRISMA-ScR, con 176 documentos de 2021 a 2026. Las búsquedas se hicieron el 18 de octubre de 2026 en PubMed, Embase, Cochrane, SciELO, RePEc y Google Scholar, y el 20 de octubre en LILACS, más literatura gris de la OMS y el BID.
 - **Estudios citados:** se generan en `js/studies.js` desde la base verificada de la revisión, con DOI o URL comprobados.
 - **Ejemplos colombianos:** cada uno enlaza a su norma o reporte original.
 - **Etiquetas de procedencia:** «Verificado en fuente» (documento con enlace verificado), «Síntesis del autor» (clasificación, propuesta o dato ilustrativo) y «Pendiente de verificación».

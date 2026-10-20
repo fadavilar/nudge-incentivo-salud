@@ -730,7 +730,7 @@
     const flow = el("div",{class:"flow-steps"});
     me.flow.forEach(f=> flow.appendChild(el("div",{class:"flow-step"},[ el("div",{class:"fs-n"},[ f.n!=null ? fmt(f.n,0) : String(DATA.studies.length) ]), el("div",{class:"fs-l"},[f.label]) ])));
     body.appendChild(flow);
-    body.appendChild(el("p",{class:"author-note"},[ confidenceTag("pendiente","Actualización en curso"), " ", me.lilacs ]));
+    body.appendChild(el("p",{class:"author-note"},[ confidenceTag("verificado","LILACS"), " ", me.lilacs ]));
     body.appendChild(el("p",{class:"muted-small"},["Guía de reporte: ", extLink(me.methodRefs[0].label, me.methodRefs[0].url)]));
 
     sectionDivider(body, "met-fuentes", "Fuentes y etiquetas", null);

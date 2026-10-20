@@ -14,7 +14,7 @@ const DATA = {
     author: "Fabian Dávila Ramírez",
     credentials: "MD, MBA, PhD",
     affiliation: "Fundación Universitaria de Ciencias de la Salud (FUCS) · Universidad de Navarra · Universidad de Bogotá Jorge Tadeo Lozano",
-    disclaimer: "Contenido docente y de divulgación. Sintetiza una revisión de alcance propia (marco PCC, PRISMA-ScR; 174 documentos) cuyo cribado hizo un único revisor asistido por IA, con verificación del autor. La calculadora usa fórmulas aritméticas simples y datos por defecto de un caso real y de un ejercicio ilustrativo; no reemplaza una evaluación económica formal.",
+    disclaimer: "Contenido docente y de divulgación. Sintetiza una revisión de alcance propia (marco PCC, PRISMA-ScR; 176 documentos) cuyo cribado hizo un único revisor asistido por IA, con verificación del autor. La calculadora usa fórmulas aritméticas simples y datos por defecto de un caso real y de un ejercicio ilustrativo; no reemplaza una evaluación económica formal.",
     license: {
       name: "Creative Commons Atribución 4.0 Internacional (CC BY 4.0)",
       url: "https://creativecommons.org/licenses/by/4.0/deed.es",
@@ -33,7 +33,7 @@ const DATA = {
 
   heroCards: [
     { label: "La diferencia", value: "Guiar o pagar", detail: "Seis dimensiones para distinguir un nudge de un incentivo.", sec: "diferencia" },
-    { label: "La evidencia", value: "174 documentos", detail: "Qué funciona, cuánto y por cuánto tiempo (2021–2026).", sec: "evidencia" },
+    { label: "La evidencia", value: "176 documentos", detail: "Qué funciona, cuánto y por cuánto tiempo (2021–2026).", sec: "evidencia" },
     { label: "La calculadora", value: "Costo por punto", detail: "Plantilla interactiva con un caso real colombiano por defecto.", sec: "calculadora" },
     { label: "Colombia", value: "8 ejemplos", detail: "Normas y programas reales, verificados en fuente oficial.", sec: "colombia" }
   ],
@@ -99,7 +99,7 @@ const DATA = {
 
   /* ---------------- 03 EVIDENCIA ---------------- */
   evidence: {
-    intro: "Síntesis de los metaanálisis y revisiones sistemáticas incluidos en la revisión de alcance (eje 2: 81 documentos, 61 de ellos revisiones sistemáticas o metaanálisis). Cada cifra enlaza al documento original.",
+    intro: "Síntesis de los metaanálisis y revisiones sistemáticas incluidos en la revisión de alcance (eje 2: 82 documentos, 61 de ellos revisiones sistemáticas o metaanálisis). Cada cifra enlaza al documento original.",
     groups: [
       { id: "incentivos", title: "Incentivos financieros", color: "cat-c", items: [
         { stat: "d = 0,58", text: "Efecto mediano del manejo de contingencias sobre la abstinencia (y d = 0,62 sobre la adherencia).", refs: ["Bolívar et al., 2021"] },
@@ -217,7 +217,7 @@ const DATA = {
         why: "Contraejemplo: incentivo financiero condicionado a una conducta de salud, comparable con Bolsa Família en Brasil.",
         source: { label: "Ley 1948 de 2019 (Gestor Normativo de Función Pública, con nota de derogatoria)", url: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma_pdf.php?i=90183" }, related: ["Magalhães et al., 2024"] }
     ],
-    evidenceNote: "En la revisión de alcance, solo 12 de 174 documentos tienen autoría o contenido latinoamericano verificado, y solo uno es colombiano (un ensayo sin método declarado). Los ejemplos de esta sección vienen de normas y reportes, no de esa revisión: la evidencia sintetizada sobre su efecto en Colombia está por construirse.",
+    evidenceNote: "En la revisión de alcance, solo 14 de 176 documentos tienen autoría o contenido latinoamericano verificado, y solo uno es colombiano (un ensayo sin método declarado). Los ejemplos de esta sección vienen de normas y reportes, no de esa revisión: la evidencia sintetizada sobre su efecto en Colombia está por construirse.",
     evidenceRefs: ["Saldías Fernández et al., 2023", "BID, 2022", "Magalhães et al., 2024", "Arrieta Marrugo et al., 2023"],
     ideas: {
       title: "Ideas para tu institución",
@@ -298,13 +298,13 @@ const DATA = {
 
   /* ---------------- 08 MÉTODOS ---------------- */
   methods: {
-    review: "La app se apoya en una revisión de alcance propia sobre economía del bienestar y del comportamiento aplicada a la salud (marco PCC, reporte según PRISMA-ScR), con búsquedas del 18 de octubre de 2026 en PubMed/MEDLINE, Embase, Cochrane Library, SciELO, RePEc/IDEAS y Google Scholar, más literatura gris de la OMS y el BID. De 929 registros se incluyeron 174 documentos de 2021 a 2026, en tres ejes: sesgos y marcos de bienestar (53), promoción de la salud y adherencia (81) y estudios observacionales con perspectiva económica (50).",
-    lilacs: "LILACS no se pudo ejecutar en la fecha de la búsqueda porque el portal estaba en mantenimiento; su incorporación está en curso. Es la base más pertinente para la producción latinoamericana, por lo que la evidencia regional citada aquí probablemente está subestimada.",
+    review: "La app se apoya en una revisión de alcance propia sobre economía del bienestar y del comportamiento aplicada a la salud (marco PCC, reporte según PRISMA-ScR), con búsquedas del 18 de octubre de 2026 en PubMed/MEDLINE, Embase, Cochrane Library, SciELO, RePEc/IDEAS y Google Scholar, y del 20 de octubre en LILACS, más literatura gris de la OMS y el BID. De 990 registros se incluyeron 176 documentos de 2021 a 2026, en tres ejes: sesgos y marcos de bienestar (54), promoción de la salud y adherencia (82) y estudios observacionales con perspectiva económica (51).",
+    lilacs: "LILACS no se pudo consultar el 18 de octubre porque el portal estaba en mantenimiento; el autor la ejecutó el 20 de octubre, con los filtros de base y años aplicados a mano en el portal. Aportó 61 registros, de los que se incluyeron 2: un ensayo bioético brasileño y una síntesis del Ministerio de Salud de Chile sobre el impuesto a las bebidas azucaradas. Aun con LILACS, la evidencia sintetizada colombiana sigue siendo casi inexistente.",
     flow: [
-      { label: "Registros identificados en bases", n: 929 },
-      { label: "Registros examinados", n: 792 },
-      { label: "Buscados a texto completo", n: 179 },
-      { label: "Incluidos (172 de bases + 2 de literatura gris)", n: 174 },
+      { label: "Registros identificados en bases", n: 990 },
+      { label: "Registros examinados", n: 846 },
+      { label: "Buscados a texto completo", n: 181 },
+      { label: "Incluidos (174 de bases + 2 de literatura gris)", n: 176 },
       { label: "Citados en esta app", n: null }
     ],
     extraSources: "Los ejemplos colombianos (sección 05) no provienen de la revisión: se identificaron de forma dirigida en fuentes oficiales (normogramas de la Superintendencia de Salud, el INVIMA y la Cancillería, el Gestor Normativo de Función Pública, FAOLEX) y en reportes del programa de prevención del VPH de la American Cancer Society. Cada enlace se comprobó antes de publicar.",
